@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
     const data = await createProduct(req.body);
     res.json(data);
   } catch (error) {
-    console.log(`Error: ${error.message}, status: ${error.status}`);
+    console.log(`Error: ${error.message}`);
     res.status(400).json({ error: error.message });
   }
 });
