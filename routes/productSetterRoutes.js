@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
 // PATCH /product/:id
 router.patch('/:id', async (req, res) => {
   try {
-    const data = await updateProduct(req.params.id);
+    const data = await updateProduct(req.params.id, req.body);
     res.json(data);
   } catch (error) {
     console.log(`Error: ${error.message}`);

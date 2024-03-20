@@ -1,13 +1,16 @@
-const { Types } = require('mongoose');
+const {
+  updateProductValidation,
+} = require('../validation/updateProductValidation');
+const Product = require('../models/productModel');
 
-function updateProduct(id) {
-  console.log(Types.ObjectId.isValid(id));
+async function updateProduct(id, data) {
+  updateProductValidation(id, data);
 
-  if (!Types.ObjectId.isValid(id)) {
-    throw new Error('id is required. Check if it is provided and string');
-  }
+  const response = await Product.findByIdAndUpdate(id, data, {
+    new: true,
+  });
 
-  return 'product updated';
+  return response;
 }
 
 module.exports = updateProduct;
