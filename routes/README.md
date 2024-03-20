@@ -27,7 +27,7 @@ route returns an object of **single product** <br>
 **Response:**<br>
 
 ```
- {
+{
     "_id": ObjectID, // mongoDB ObjectID
     "title": String,
     "description": String,
