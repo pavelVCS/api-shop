@@ -1,3 +1,5 @@
+# Getters
+
 ### `GET` `/product`
 
 route returns Array of **products** <br>
@@ -15,7 +17,6 @@ route returns Array of **products** <br>
 ]
 ```
 
-<br>
 <br>
 <br>
 
@@ -36,4 +37,5 @@ route returns an object of **single product** <br>
 
 <br>
 <br>
-<br>
+
+# Setters
