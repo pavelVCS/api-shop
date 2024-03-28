@@ -1,9 +1,25 @@
-// npm bcrypt
+const User = require('../models/userModel');
+const bcrypt = require('bcrypt');
+const {
+  registerUserValidation,
+} = require('../validation/registerUserValidation');
 
-function registerUser(user) {
-  console.log(user);
+async function registerUser(user) {
+  registerUserValidation(user);
 
-  return 'get product by id';
+  // check if any user alread exists
+  const userExists = await User.find();
+  if (userExists?.length) throw new Error('User already exists');
+
+  // hash password
+  const hashedPwd = await bcrypt.hash(user.password, 10);
+
+  const newUser = await User.create({
+    username: user.username,
+    password: hashedPwd,
+  });
+
+  return newUser;
 }
 
 module.exports = registerUser;
