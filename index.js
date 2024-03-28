@@ -9,9 +9,10 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-app.use('/product', require('./routes/productGetterRoutes'));
-app.use('/product', require('./routes/productSetterRoutes'));
-app.get('/', (req, res) => res.send('Express on Vercel'));
+app.use('/product', require('./routes/productGetter.routes'));
+app.use('/product', require('./routes/productSetter.routes'));
+app.use('/user', require('./routes/user.routes'));
+app.get('/', (_, res) => res.send('Express on Vercel'));
 
 const connectDB = async () => {
   try {
@@ -19,7 +20,7 @@ const connectDB = async () => {
 
     console.log('Database connected');
   } catch (err) {
-    console.log('Error:', err.message);
+    console.log('connectDB ERROR:', err.message);
   }
 };
 
